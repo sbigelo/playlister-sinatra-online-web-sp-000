@@ -51,6 +51,7 @@ patch '/songs/:slug' do
   @song.save
 
   erb :'songs/show', locals: {message: "Song successfully updated."}
+  redirect("/songs/#{@song.slug}")
 end
 
 end
