@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
 
   get '/songs' do
-    @song = Song.all
+    @songs = Song.all
     erb :'/songs/index'
   end
 
@@ -42,7 +42,6 @@ patch '/songs/:slug' do
   @song.update(params[:song])
 
   @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-  @song.genre_ids = params[:genres]
   @song.save
 
   erb :'songs/show', locals: {message: "Song successfully updated."}
